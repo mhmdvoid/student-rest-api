@@ -3,7 +3,9 @@ package com.example.studentapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,13 @@ public class StudentController {
 		Parse the payload from req body into jvm object
 	*/ Student student) {
 		studentService.addNewStudent(student);
+	}
+
+
+	@DeleteMapping(path = "{studentId}")
+	public void deleteStudent(@PathVariable("studentId") Long studentId) {
+
+		studentService.deleteStudent(studentId);
 	}
 	
 }
